@@ -17,7 +17,7 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {    
     [_BASE] = LAYOUT(
-        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                         KC_MINS,  KC_7,    KC_8,    KC_9,    KC_0,   _______, KC_BSPC,
+        QK_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                         KC_MINS,  KC_7,    KC_8,    KC_9,    KC_0,   _______, KC_BSPC,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,                             KC_Y,    KC_U,    KC_I,    KC_O,       KC_P,      KC_BSLS,
         MO(1),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                         KC_SCLN, KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
         KC_LSFT, _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    TG(_RS3),   KC_MUTE, KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_RSFT,
@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_FN2] = LAYOUT(                                                                                   
         _______, KC_F11,  KC_F12,  _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, RESET,   _______, _______,                         _______, _______, _______,  _______,    _______,   _______,
+        _______, _______, _______, _______, QK_BOOT, _______, _______,                         _______, _______, _______,  _______,    _______,   _______,
         _______, _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______,     _______, _______,      _______,    _______,      _______, _______,     _______, _______, _______, _______
@@ -47,20 +47,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef OLED_ENABLE
-	static void render_logo(void) {     // Render MechWild "MW" Logo
-		static const char PROGMEM logo_1[] = {0x8A, 0x8B, 0x8C, 0x8D, 0x00};
-		static const char PROGMEM logo_2[] = {0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0x00};
-		static const char PROGMEM logo_3[] = {0xCA, 0xCB, 0xCC, 0xCD, 0x00};
-		static const char PROGMEM logo_4[] = {0x20, 0x8E, 0x8F, 0x90, 0x00};
-		oled_set_cursor(0,0);
-		oled_write_P(logo_1, false);
-		oled_set_cursor(0,1);
-		oled_write_P(logo_2, false);
-		oled_set_cursor(0,2);
-		oled_write_P(logo_3, false);
-		oled_set_cursor(0,3);
-		oled_write_P(logo_4, false);
-	}
+     static void render_logo(void) {     // Render MechWild "MW" Logo
+          static const char PROGMEM logo_1[] = {0x8A, 0x8B, 0x8C, 0x8D, 0x00};
+          static const char PROGMEM logo_2[] = {0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0x00};
+          static const char PROGMEM logo_3[] = {0xCA, 0xCB, 0xCC, 0xCD, 0x00};
+          static const char PROGMEM logo_4[] = {0x20, 0x8E, 0x8F, 0x90, 0x00};
+          oled_set_cursor(0,0);
+          oled_write_P(logo_1, false);
+          oled_set_cursor(0,1);
+          oled_write_P(logo_2, false);
+          oled_set_cursor(0,2);
+          oled_write_P(logo_3, false);
+          oled_set_cursor(0,3);
+          oled_write_P(logo_4, false);
+     }
     bool oled_task_user(void) {
         render_logo();
         oled_set_cursor(0,6);
