@@ -16,14 +16,20 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-    EXCEL = SAFE_RANGE,
+    MS_EXCEL = SAFE_RANGE,
+    MS_WORD,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case EXCEL:
+        case MS_EXCEL:
             if (record->event.pressed) {
                 SEND_STRING(SS_LGUI("r") SS_DELAY(10) "excel" SS_TAP(X_ENT));
+            }
+            break;
+        case MS_WORD:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LGUI("r") SS_DELAY(10) "word" SS_TAP(X_ENT));
             }
             break;
     }
@@ -42,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* esc      1        2        3        4       5       6       7       8       9         0        -         =     bkspc      delete */
       KC_TRNS,  KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10,  KC_F11,   KC_F12,  KC_TRNS,   KC_TRNS,
      /*  tab      Q       W        E        R        T      Y        U      I        O        P        [         ]                 `~    */
-      KC_TRNS, KC_TRNS, KC_TRNS, EXCEL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,           KC_CALC,
+      KC_TRNS, KC_TRNS, MS_WORD, MS_EXCEL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,           KC_CALC,
      /*  caps     A       S        D        F        G      H        J      K        L        ;        '          #     enter     pg up*/
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_INS,  KC_TRNS,  KC_MAIL,
      /* shift     \       Z         X        C       V       B       N      M        ,        .        /        shift     up      pg dn*/
